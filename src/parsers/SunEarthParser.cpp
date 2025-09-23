@@ -1,5 +1,6 @@
 #include <fstream>
 #include <sstream>
+#include <iostream>
 // Log in console
 #include <spdlog/spdlog.h>
 
@@ -117,13 +118,27 @@ void SunEarthToolsParser::loadSunpathFile(const std::string& sunPathFile, int iS
 
    if (found == false)
    {
-      spdlog::error("Do not found any date corresponding while loading Annual SunPath file.");
+      spdlog::error("Did not find any date corresponding to request while loading Annual SunPath file.");
    }
 }
 
 const std::vector<SunDatas>& SunEarthToolsParser::getSunDatas() const
 {
    return m_sunDatasLoaded;
+}
+
+std::vector<SunDatas> SunEarthToolsParser::getSunDataAtHour(int hour)
+{
+   std::vector<SunDatas> sunDatasAtHour;
+
+   for(auto data : m_sunDatasLoaded){
+      int pos = data.dateStr.find(':');
+      int currHour = std::stoi(data.dateStr.substr(pos+1, 2));
+      if(hour == currHour){
+         sunDatasAtHour.push_back(data);
+      }
+   }
+   return sunDatasAtHour;
 }
 
 Quaternion SunEarthToolsParser::getSunRotation(double azimutAngleInRadians, double elevationAngleInRadians) const

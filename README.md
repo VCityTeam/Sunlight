@@ -154,6 +154,7 @@ Distributed under the LGPL-2.1 License. See `LICENSE` and `Libraries Licenses` f
 ## Main Contributors
 
 - Wesley Petit - [Website](https://wesleypetit.fr/) - <wesley.petit.lemoine@gmail.com>
+- Marwan Ait Addi - [Website](https://marwan-ru.github.io/website/) - <marwan.ait.addi@univ-lyon2.fr>
 
 ## Acknowledgments
 
